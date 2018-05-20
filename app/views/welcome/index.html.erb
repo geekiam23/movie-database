@@ -1,53 +1,59 @@
 <br />
-<div class="jumbotron container">
-  <h1>BLOC MovieDB</h1>
-    <p>Built using The MovieDB API.</p>
-</div>
+<header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h1 class="mb-4">BLOC Movie Database</h1>
+                <h4>Built with The MovieDB API.</h4>
+            </div><br />
+             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto pt-5">
+                <div class="form-row">
+                    <div class="col-12 col-md-9 mb-2 mb-md-0 ml-5">
+                        <%= form_with(url: tv_shows_results_path, method: 'get', local: true) do |f| %>
+                            <div class="col-sm-12">
+                                <%= f.label :q, "Search for a TV Show:" %> <!--q variable represents the string entered in the Search box-->
+                                <%= f.text_field :q %>
+                                <%= f.submit 'Search' %>
+                             </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header><br />
 
 <div class="container">
-  <div class="row">
-    <h3>Search for a TV show here!</h3>
-        <!--<div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text glyphicon glyphicon=search" aria-hidden="true"></span>
+    <div class="row">
+        <div class="container">
+            <h3 class="shows-title text-center pt-3 pb-4">Popular TV Shows</h3>
+        </div><br />
+        <div class="popular-shows"> 
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr class="d-flex text-center">
+                        <th class="col-sm-2 align-top">TV Show</th>
+                        <th class="col-sm-1 align-top">Popularity</th>
+                        <th class="col-sm-2 align-top">First Air Date</th>
+                        <th class="col-sm-5 align-top">Synopsis</th>
+                        <th class="col-sm-1 align-top">Rating</th>
+                        <th class="col-sm-1 align-top">Vote Count</th>
+                    </tr>
+                </thead>
+                <% @popular[:results].each do |tv|  %>
+                    <tbody>
+                        <tr class="d-flex text-center">
+                            <td class="col-sm-2"><%= tv[:original_name]%></td>
+                            <td class="col-sm-1"><%= tv[:popularity].round%></td>
+                            <td class="col-sm-2"><%= tv[:first_air_date].to_time.strftime("%B %e, %Y")%></td>
+                            <td class="col-sm-5"><%= tv[:overview]%></td>
+                            <td class="col-sm-1"><%= tv[:vote_average]%></td>
+                            <td class="col-sm-1"><%= tv[:vote_count]%></td>
+                        </tr>
+                    </tbody>
+                <% end %>
+            </table>
         </div>
-        <input type="text" class="form-control" placeholder="Search for a TV show" aria-label="Search" aria-describedby="basic-addon1">-->
-        <%= form_tag("/tv_shows/results", method: "get") do %>
-            <%= label_tag(:q, "Search for:") %> <!--q variable represents the string entered in the Search box-->
-            <%= text_field_tag(:q) %>
-            <%= submit_tag("Search") %>
-        <% end %>
-    </div><br />
-    <%#= link_to "Search", tv_shows_results_path, class: 'btn btn-success'%>
-  </div><br />
-
-  <div class="row">
-    <h3>Popular TV Shows</h3>
-    <div class="popular-shows"> 
-        <table class="table table-bordered table-striped ">
-            <% @popular[:results].each do |tv|  %>
-            <thead>
-                <tr>
-                    <th scope="col">TV Show</th>
-                    <th scope="col">Popularity</th>
-                    <th scope="col">First Air Date</th>
-                    <th scope="col">Synopsis</th>
-                    <th scope="col">Rating</th>
-                    <th scope="col">Vote Count</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><%= tv[:original_name]%></td>
-                    <td><%= tv[:popularity]%></td>
-                    <td><%= tv[:first_air_date]%></td>
-                    <td><%= tv[:overview]%></td>
-                    <td><%= tv[:vote_average]%></td>
-                    <td><%= tv[:vote_count]%></td>
-                </tr>
-            </tbody>
-            <% end %>
-        </table>
     </div>
-  </div>
 </div>

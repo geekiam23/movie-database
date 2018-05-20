@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
 
   #Contoller for application landing page.
   def initialize
+    super
     @popular 
   end
 

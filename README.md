@@ -1,22 +1,23 @@
-# Movie Database
+# BLOC Movie Database
 
+## About
 
-Things you may want to cover:
+The BLOC MovieDB is a fullstack application built with *The MovieDB API*. Users can see a list of popular TV shows and search for any show in the API database. From the search results page, users can view additional information about a TV show.
 
-* Ruby version
+## Specs
 
-* System dependencies
+**Ruby:** 2.5.0
+**Rails:** 5.1.4
+**Bootstrap:** 4.1.1
 
-* Configuration
+Ruby on Rails and Bootstrap were chosen due to the project timeframe. The HTTParty and Addressable gems were implemented to facilitate API integration.
 
-* Database creation
+## Coming Up
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Future updates would include the following features:
+- Adding search & show views for movies
+- Adding images for TV shows & movies 
+- Adding actor biographies & headshots 
+- Exception handling for user errors
+- More rspec tests
+- Making all components more responsive & accessible
